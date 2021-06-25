@@ -19,5 +19,9 @@ jobs:
 
     - name: Composer install
       run: composer install
+  test:
+    steps:
+    - name: Testing
+      run: php bin/phpunit
 
 
