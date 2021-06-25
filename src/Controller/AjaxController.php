@@ -18,7 +18,7 @@ class AjaxController extends AbstractController
      */
     public function inline()
     {
-        return new Response('This is not ajax!', 400);
+        return new Response('This is not ajax', 400);
     }
 
 
