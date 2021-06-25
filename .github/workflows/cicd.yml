@@ -20,6 +20,8 @@ jobs:
     - name: Composer install
       run: composer install
   test:
+    runs-on: ubuntu-latest
+
     steps:
     - name: Testing
       run: php bin/phpunit
