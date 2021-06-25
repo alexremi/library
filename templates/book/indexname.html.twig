@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список книг{% endblock %}
+
+{% block body %}
+    <h1>Список книг</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.name }}</td>
+                <td>
+                    <a href="{{ path('books_show', {'id': book.id}) }}">Просмотр</a>
+                    <a href="{{ path('books_edit', {'id': book.id}) }}">Редактировать</a>
+                    <a href="{{ path('books_delete', {'id': book.id}) }}">Удалить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">нет записей</td>
+            </tr>
+        {% endfor %}
+        <a href="{{ path('author_index') }}">Список авторов </a>
+        <a href="{{ path('books_new') }}">Добавить книгу </a>
+        <a href="{{ path('books_index') }}">Список книг</a>
+        <br><a href="{{ path('books_au') }}">Фильтр по автору/ </a><a href="{{ path('books_desc') }}">по описанию/ </a><a href="{{ path('books_img') }}">по обложке/ </a><a href="{{ path('books_year') }}">по году публикации</a>
+        </tbody>
+    </table>
+{% endblock %}

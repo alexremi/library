@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактировать книгу{% endblock %}
+
+{% block body %}
+    <h1>Редактировать книгу</h1>
+
+    <form name="newbook" method="POST" enctype="multipart/form-data" action="{{ path('books_edit',{'id': bookId}) }}">
+        <label>Имя: <input type="text" name="name" value="{{ bname }}"></label>
+        <br><label>Автор: <select name="author[]" multiple>
+                {% for author in authors %}
+                    <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endfor %}
+            </select></label>
+        <br><label>Описание: <input type="text" name="description" value="{{ bdesc }}"></label>
+        <br><label>Обложка: <input type="file" name="image" multiple></label>
+        <br><label>Год публикации: <input type="text" name="year" value="{{ byear }}"></label>
+        <br><input type="submit" name="send" value="Добавить">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список авторов{% endblock %}
+
+{% block body %}
+    <h1>Список авторов</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Автор</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for author in authors %}
+            <tr>
+                <td>{{ author.id }}</td>
+                <td>{{ author.name }}</td>
+                <td>
+                    <a href="{{ path('author_show', {'id': author.id}) }}">Просмотр</a>
+                    <a href="{{ path('author_edit', {'id': author.id}) }}">Редактировать</a>
+                    <a href="{{ path('author_delete', {'id': author.id}) }}">Удалить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">нет записей</td>
+            </tr>
+        {% endfor %}
+        <a href="{{ path('books_index') }}">Список книг </a>
+        <a href="{{ path('author_new') }}">Добавить автора</a>
+        </tbody>
+    </table>
+{% endblock %}

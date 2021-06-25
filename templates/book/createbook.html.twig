@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новая книга{% endblock %}
+
+{% block body %}
+    <h1>Новая книга</h1>
+
+    <form name="newbook" method="POST" enctype="multipart/form-data" action="/books/new">
+        <label>Имя: <input type="text" name="name"></label>
+        <br><label>Автор: <select name="author[]" multiple>
+                {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endfor %}
+            </select></label>
+        <br><label>Описание: <input type="text" name="description"></label>
+        <br><label>Обложка: <input type="file" name="image" multiple></label>
+        <br><label>Год публикации: <input type="text" name="year"></label>
+        <br><input type="submit" name="send" value="Добавить">
+    </form>
+
+{% endblock %}

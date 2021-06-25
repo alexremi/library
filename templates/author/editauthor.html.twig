@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Изменить автора{% endblock %}
+
+{% block body %}
+    <h1>Изменить автора</h1>
+
+    <form name="editauthor" method="POST" action="{{ path('author_edit',{'id': authorId}) }}">
+        <label>Имя: <input type="text" name="name" value="{{ aname }}"></label>
+        <input type="submit" name="update" value="Изменить">
+    </form>
+
+{% endblock %}

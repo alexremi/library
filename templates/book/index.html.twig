@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список книг{% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+    <script src ="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src ="https://unpkg.com/jquery-tabledit@1.0.0/jquery.tabledit.js"></script>
+    <script>
+        function inline(element,column,id)
+        {var value = element.innerText;
+        let formData = new FormData();
+            formData.append("id",id);
+            formData.append("column",column);
+            formData.append("value",value);
+            fetch('{{ path('inline') }}',{
+                method: 'POST',
+                body: formData
+            })
+            .then((response)=>{
+                return response.ok
+            })
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>Список книг</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Описание</th>
+            <th>Обложка</th>
+            <th>Год публикации</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td contenteditable="true" onblur="inline(this,'name',{{ book.id }})">{{ book.name }}</td>
+                <td>{{ book.authors }}</td>
+                <td contenteditable="true" onblur="inline(this,'description',{{ book.id }})">{{ book.description }}</td>
+                <td>
+                    <img style="width: 20ex; height: auto; border-radius: 5px" src="{{ asset(book.image) }}" alt="">
+                </td>
+                <td contenteditable="true" onblur="inline(this,'year',{{ book.id }})">{{ book.year }}</td>
+                <td>
+                    <a href="{{ path('books_show', {'id': book.id}) }}">Просмотр</a>
+                    <a href="{{ path('books_edit', {'id': book.id}) }}">Редактировать</a>
+                    <a href="{{ path('books_delete', {'id': book.id}) }}">Удалить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">нет записей</td>
+            </tr>
+        {% endfor %}
+        <a href="{{ path('author_index') }}">Список авторов </a>
+        <a href="{{ path('books_new') }}">Добавить книгу</a>
+        <br><a href="{{ path('books_name') }}">Фильтр по названию/ </a><a href="{{ path('books_au') }}">по автору/ </a><a href="{{ path('books_desc') }}">по описанию/ </a><a href="{{ path('books_img') }}">по обложке/ </a><a href="{{ path('books_year') }}">по году публикации</a>
+        </tbody>
+    </table>
+{% endblock %}

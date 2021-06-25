@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сведения о книге{% endblock %}
+
+{% block body %}
+    <h1>Сведения о книге</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Описание</th>
+            <th>Обложка</th>
+            <th>Год публикации</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.authors }}</td>
+                <td>{{ book.description }}</td>
+                <td>
+                    <img style="width: 20ex; height: auto; border-radius: 5px" src="{{ asset(book.image) }}" alt="">
+                </td>
+                <td>{{ book.year }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">нет записей</td>
+            </tr>
+        {% endfor %}
+        <a href="{{ path('books_index') }}">Список книг </a>
+        </tbody>
+    </table>
+{% endblock %}

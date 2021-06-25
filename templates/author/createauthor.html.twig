@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый автор{% endblock %}
+
+{% block body %}
+    <h1>Новый автор</h1>
+
+    <form name="newauthor" method="POST" action="/author/new">
+        <label>Имя: <input type="text" name="name"></label>
+        <input type="submit" name="send" value="Добавить">
+    </form>
+
+{% endblock %}
