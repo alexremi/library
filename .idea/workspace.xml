@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bb4f73d-3338-44b2-b3db-eb3b703d7bb0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,11 @@
   <component name="PhpServers">
     <servers>
       <server host="_" id="91bff39f-ead8-4544-866b-6b2d4b29f793" name="_" port="8099" />
+      <server host="_" id="02d58f83-c6c7-4f59-aa24-0ce972e4b91b" name="_ (1)" port="8092" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/public" remote-root="/var/www/html/actions-runner/_work/library/library/public" />
+        </path_mappings>
+      </server>
     </servers>
   </component>
   <component name="PhpWebServerValidation" path_to_validation_script="$PROJECT_DIR$" selected_validation_type="LOCAL" web_path_to_validation_script="http://127.0.0.1/" />
@@ -247,7 +252,7 @@
       <workItem from="1624443309739" duration="73000" />
       <workItem from="1624617412312" duration="153000" />
       <workItem from="1624617683748" duration="637000" />
-      <workItem from="1624621689837" duration="2849000" />
+      <workItem from="1624621689837" duration="3363000" />
     </task>
     <servers />
   </component>
